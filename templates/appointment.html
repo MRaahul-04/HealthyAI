@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book an Appointment</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Book Your Appointment</h1>
+        <form id="appointmentForm">
+            <label>
+                <input type="text" name="name" placeholder="Your Name" required>
+            </label>
+            <label>
+                <input type="text" name="date" placeholder="Appointment Date" required>
+            </label>
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+            let data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            fetch('/appointment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => alert(data.status));
+        });
+    </script>
+</body>
+</html>
