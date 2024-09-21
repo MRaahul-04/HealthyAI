@@ -1,8 +1,8 @@
 # routes.py
 
-from flask import render_template, request, redirect, url_for, session, jsonify
+from flask import app, render_template, request, redirect, url_for, session, jsonify
 from chatbot import process_message
-from __init__ import app
+# from __init__ import app
 from models import User, store_conversation, book_appointment_in_db
 from werkzeug.security import check_password_hash
 

@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 pymysql.install_as_MySQLdb()
 
 # Import routes after an app and db initialization to avoid circular imports
-from routes import *
+from . import routes
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
